@@ -1,0 +1,21 @@
+## Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+## Env
+.env
+
+## OS / Editor
+.DS_Store
+.idea/
+.vscode/
+
+## Data exports
+data/exports/
+data/incoming/
+*.xlsx
+*.csv
+
