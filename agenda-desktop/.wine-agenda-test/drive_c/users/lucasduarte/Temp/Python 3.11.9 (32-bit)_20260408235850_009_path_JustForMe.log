@@ -1,0 +1,211 @@
+1: 0 2: 1033 3: 0 
+=== Logging started: 4/8/2026  11:59:05 ===
+Message type: 0, Argument: 1033, 0
+Message type: 1, Argument: Python 3.11.9 Add to Path (32-bit)
+Action 11:59:05: INSTALL. 
+Action start 11:59:05: INSTALL.
+1: 0 2: 1033 3: 0 
+1: 0 2: 1033 3: 0 
+=== Logging started: 4/8/2026  11:59:05 ===
+Message type: 0, Argument: 1033, 0
+Message type: 1, Argument: Python 3.11.9 Add to Path (32-bit)
+Action 11:59:05: INSTALL. 
+Action start 11:59:05: INSTALL.
+1: Python 3.11.9 Add to Path (32-bit) 2: {95168022-9EFB-4662-936D-02AB55C4EE9B} 
+Action 11:59:05: FindRelatedProducts. Searching for related applications
+Action start 11:59:05: FindRelatedProducts.
+Action ended 11:59:05: FindRelatedProducts. Return value 1.
+Action 11:59:05: AppSearch. Searching for installed applications
+Action start 11:59:05: AppSearch.
+Property: TARGETDIR, Signature: PythonExe_Directory
+Action ended 11:59:05: AppSearch. Return value 1.
+Action 11:59:05: LaunchConditions. Evaluating launch conditions
+Action start 11:59:05: LaunchConditions.
+Action ended 11:59:05: LaunchConditions. Return value 1.
+Action 11:59:05: ValidateProductID. 
+Action start 11:59:05: ValidateProductID.
+Action ended 11:59:05: ValidateProductID. Return value 1.
+Action 11:59:05: CostInitialize. Computing space requirements
+Action start 11:59:05: CostInitialize.
+Action ended 11:59:05: CostInitialize. Return value 1.
+Action 11:59:05: FileCost. Computing space requirements
+Action start 11:59:05: FileCost.
+Action ended 11:59:05: FileCost. Return value 1.
+Action 11:59:05: CostFinalize. Computing space requirements
+Action start 11:59:05: CostFinalize.
+Action ended 11:59:05: CostFinalize. Return value 1.
+Action 11:59:05: InstallValidate. Validating install
+Action start 11:59:05: InstallValidate.
+Action ended 11:59:05: InstallValidate. Return value 1.
+Action 11:59:05: InstallInitialize. 
+Action start 11:59:05: InstallInitialize.
+Action ended 11:59:05: InstallInitialize. Return value 1.
+Action 11:59:05: ProcessComponents. Updating component registration
+Action start 11:59:05: ProcessComponents.
+Action ended 11:59:05: ProcessComponents. Return value 1.
+Action 11:59:05: UnpublishFeatures. Unpublishing Product Features
+Action start 11:59:05: UnpublishFeatures.
+Action ended 11:59:05: UnpublishFeatures. Return value 1.
+Action 11:59:05: RemoveRegistryValues. Removing system registry values
+Action start 11:59:05: RemoveRegistryValues.
+Action ended 11:59:05: RemoveRegistryValues. Return value 1.
+Action 11:59:05: RemoveEnvironmentStrings. Updating environment strings
+Action start 11:59:05: RemoveEnvironmentStrings.
+Action ended 11:59:05: RemoveEnvironmentStrings. Return value 1.
+Action 11:59:05: RemoveFiles. Removing files
+Action start 11:59:05: RemoveFiles.
+Action ended 11:59:05: RemoveFiles. Return value 1.
+Action 11:59:05: RemoveFolders. Removing folders
+Action start 11:59:05: RemoveFolders.
+Action ended 11:59:05: RemoveFolders. Return value 1.
+Action 11:59:05: CreateFolders. Creating folders
+Action start 11:59:05: CreateFolders.
+Action ended 11:59:05: CreateFolders. Return value 1.
+Action 11:59:05: WriteRegistryValues. Writing system registry values
+Action start 11:59:05: WriteRegistryValues.
+Action ended 11:59:05: WriteRegistryValues. Return value 1.
+Action 11:59:05: WriteEnvironmentStrings. Updating environment strings
+Action start 11:59:05: WriteEnvironmentStrings.
+Action ended 11:59:05: WriteEnvironmentStrings. Return value 1.
+Action 11:59:05: RegisterUser. Registering user
+Action start 11:59:05: RegisterUser.
+Action ended 11:59:05: RegisterUser. Return value 1.
+Action 11:59:05: RegisterProduct. Registering product
+Action start 11:59:05: RegisterProduct.
+Action ended 11:59:05: RegisterProduct. Return value 1.
+Action 11:59:05: PublishFeatures. Publishing Product Features
+Action start 11:59:05: PublishFeatures.
+Action ended 11:59:05: PublishFeatures. Return value 1.
+Action 11:59:05: PublishProduct. Publishing product information
+Action start 11:59:05: PublishProduct.
+Action ended 11:59:05: PublishProduct. Return value 1.
+Action 11:59:05: InstallFinalize. 
+Action start 11:59:05: InstallFinalize.
+Action 11:59:05: ProcessComponents. Updating component registration
+Action start 11:59:05: ProcessComponents.
+1: {95168022-9EFB-4662-936D-02AB55C4EE9B} 2: {32DF889D-FF9D-55BE-960A-AE28F080C347} 3: 01:\Software\Python\PythonCore\3.11-32\InstalledFeatures\path 
+1: {95168022-9EFB-4662-936D-02AB55C4EE9B} 2: {EFE9DD26-56A9-50F2-AAB6-5427990BD20E} 3: 02:\Software\Python\PythonCore\3.11-32\InstalledFeatures\path 
+Action ended 11:59:05: ProcessComponents. Return value 1.
+Action 11:59:05: UnpublishFeatures. Unpublishing Product Features
+Action start 11:59:05: UnpublishFeatures.
+Action ended 11:59:05: UnpublishFeatures. Return value 1.
+Action 11:59:05: RemoveRegistryValues. Removing system registry values
+Action start 11:59:05: RemoveRegistryValues.
+Action ended 11:59:05: RemoveRegistryValues. Return value 1.
+Action 11:59:05: RemoveEnvironmentStrings. Updating environment strings
+Action start 11:59:05: RemoveEnvironmentStrings.
+Action ended 11:59:05: RemoveEnvironmentStrings. Return value 1.
+Action 11:59:05: RemoveFiles. Removing files
+Action start 11:59:05: RemoveFiles.
+Action ended 11:59:05: RemoveFiles. Return value 1.
+Action 11:59:05: RemoveFolders. Removing folders
+Action start 11:59:05: RemoveFolders.
+Action ended 11:59:05: RemoveFolders. Return value 1.
+Action 11:59:05: CreateFolders. Creating folders
+Action start 11:59:05: CreateFolders.
+Folder: Scripts
+Action ended 11:59:05: CreateFolders. Return value 1.
+Action 11:59:05: WriteRegistryValues. Writing system registry values
+Action start 11:59:05: WriteRegistryValues.
+Key: HKEY_CURRENT_USER\Software\Python\PythonCore\3.11-32\InstalledFeatures, Name: path, Value: 3.11.9150.0
+Action ended 11:59:05: WriteRegistryValues. Return value 1.
+Action 11:59:05: WriteEnvironmentStrings. Updating environment strings
+Action start 11:59:05: WriteEnvironmentStrings.
+Name: PATH, Value: c:\Python311\;, Action 2
+Name: PATH, Value: c:\Python311\Scripts\;c:\Python311\;, Action -2147483647
+Action ended 11:59:05: WriteEnvironmentStrings. Return value 1.
+Action 11:59:05: RegisterUser. Registering user
+Action start 11:59:05: RegisterUser.
+1:  
+Action ended 11:59:05: RegisterUser. Return value 1.
+Action 11:59:05: RegisterProduct. Registering product
+Action start 11:59:05: RegisterProduct.
+1: {95168022-9EFB-4662-936D-02AB55C4EE9B} 
+Action ended 11:59:05: RegisterProduct. Return value 1.
+Action 11:59:05: PublishFeatures. Publishing Product Features
+Action start 11:59:05: PublishFeatures.
+Feature: DefaultFeature
+Action ended 11:59:05: PublishFeatures. Return value 1.
+Action 11:59:05: PublishProduct. Publishing product information
+Action start 11:59:05: PublishProduct.
+1: {95168022-9EFB-4662-936D-02AB55C4EE9B} 
+Action ended 11:59:05: PublishProduct. Return value 1.
+Action ended 11:59:05: InstallFinalize. Return value 1.
+Action ended 11:59:05: INSTALL. Return value 1.
+1: Python 3.11.9 Add to Path (32-bit) 2: {95168022-9EFB-4662-936D-02AB55C4EE9B} 3: 1 
+Property(S): UpgradeCode = {1CDF8DAE-CE9A-5092-A6E7-7FC70C16E812}
+Property(S): TARGETDIR = c:\Python311\
+Property(S): InstallDirectory = c:\Python311\
+Property(S): Scripts = c:\Python311\Scripts\
+Property(S): SourceDir = C:\users\lucasduarte\Local Settings\Application Data\Package Cache\{95168022-9EFB-4662-936D-02AB55C4EE9B}v3.11.9150.0\
+Property(S): Manufacturer = Python Software Foundation
+Property(S): ProductCode = {95168022-9EFB-4662-936D-02AB55C4EE9B}
+Property(S): ProductLanguage = 1033
+Property(S): ProductName = Python 3.11.9 Add to Path (32-bit)
+Property(S): ProductVersion = 3.11.9150.0
+Property(S): DetectTargetDir = 1
+Property(S): UpgradeTable = 1
+Property(S): REGISTRYKEY = Software\Python\PythonCore\3.11-32
+Property(S): SecureCustomProperties = DOWNGRADE;MISSING_CORE;UPGRADE
+Property(S): AdminUser = 1
+Property(S): CommonAppDataFolder = C:\ProgramData\
+Property(S): FavoritesFolder = C:\users\lucasduarte\Favorites\
+Property(S): FontsFolder = C:\windows\Fonts\
+Property(S): SendToFolder = C:\users\lucasduarte\SendTo\
+Property(S): StartMenuFolder = C:\users\lucasduarte\Start Menu\
+Property(S): StartupFolder = C:\users\lucasduarte\Start Menu\Programs\StartUp\
+Property(S): TemplateFolder = C:\users\lucasduarte\Templates\
+Property(S): DesktopFolder = C:\users\lucasduarte\Desktop\
+Property(S): ProgramMenuFolder = C:\users\lucasduarte\Start Menu\Programs\
+Property(S): AdminToolsFolder = C:\users\lucasduarte\Start Menu\Programs\Administrative Tools\
+Property(S): AppDataFolder = C:\users\lucasduarte\Application Data\
+Property(S): SystemFolder = C:\windows\system32\
+Property(S): System16Folder = C:\windows\system32\
+Property(S): LocalAppDataFolder = C:\users\lucasduarte\Local Settings\Application Data\
+Property(S): MyPicturesFolder = C:\users\lucasduarte\My Pictures\
+Property(S): PersonalFolder = C:\users\lucasduarte\My Documents\
+Property(S): WindowsFolder = C:\windows\
+Property(S): PrintHoodFolder = C:\users\lucasduarte\PrintHood\
+Property(S): NetHoodFolder = C:\users\lucasduarte\NetHood\
+Property(S): RecentFolder = C:\users\lucasduarte\Recent\
+Property(S): PhysicalMemory = 31248
+Property(S): WindowsVolume = C:\
+Property(S): TempFolder = C:\users\lucasduarte\Temp\
+Property(S): Privileged = 1
+Property(S): VersionNT = 603
+Property(S): MsiNTProductType = 1
+Property(S): WindowsBuild = 9600
+Property(S): ServicePackLevel = 0
+Property(S): VersionMsi = 4.5
+Property(S): VersionDatabase = 400
+Property(S): Intel = 6
+Property(S): ProgramFilesFolder = C:\Program Files\
+Property(S): CommonFilesFolder = C:\Program Files\Common Files\
+Property(S): ScreenX = 1920
+Property(S): ScreenY = 1080
+Property(S): ColorBits = 32
+Property(S): UserSID = S-1-5-21-0-0-0-1000
+Property(S): UserLanguageID = 1033
+Property(S): SystemLanguageID = 1033
+Property(S): ProductState = -1
+Property(S): LogonUser = lucasduarte
+Property(S): ComputerName = POP-OS
+Property(S): UILevel = 2
+Property(S): PackageCode = {10FBF189-0423-414A-A6AC-38B89525AE56}
+Property(S): DATABASE = C:\windows\Installer\353a.msi
+Property(S): OriginalDatabase = C:\users\lucasduarte\Local Settings\Application Data\Package Cache\{95168022-9EFB-4662-936D-02AB55C4EE9B}v3.11.9150.0\path.msi
+Property(S): SOURCEDIR = C:\users\lucasduarte\Local Settings\Application Data\Package Cache\{95168022-9EFB-4662-936D-02AB55C4EE9B}v3.11.9150.0\
+Property(S): ARPSYSTEMCOMPONENT = 1
+Property(S): MSIFASTINSTALL = 7
+Property(S): OPTIONALFEATURESREGISTRYKEY = Software\Python\PythonCore\3.11-32\InstalledFeatures
+Property(S): REBOOT = ReallySuppress
+Property(S): ACTION = INSTALL
+Property(S): EXECUTEACTION = INSTALL
+Property(S): CostingComplete = 1
+Property(S): ROOTDRIVE = C:\
+Property(S): INSTALLLEVEL = 1
+Property(S): OutOfDiskSpace = 0
+Property(S): OutOfNoRbDiskSpace = 0
+1: 2 2: 0 
+1: 2 2: 1 
+Action ended 11:59:05: INSTALL. Return value 1.

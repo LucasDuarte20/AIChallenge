@@ -1,0 +1,260 @@
+1: 0 2: 1033 3: 0 
+=== Logging started: 4/8/2026  11:58:56 ===
+Message type: 0, Argument: 1033, 0
+Message type: 1, Argument: Python Launcher
+Action 11:58:56: INSTALL. 
+Action start 11:58:56: INSTALL.
+1: 0 2: 1033 3: 0 
+1: 0 2: 1033 3: 0 
+=== Logging started: 4/8/2026  11:58:56 ===
+Message type: 0, Argument: 1033, 0
+Message type: 1, Argument: Python Launcher
+Action 11:58:56: INSTALL. 
+Action start 11:58:56: INSTALL.
+1: Python Launcher 2: {F3C5A650-8224-4CEC-B034-EF721E333796} 
+Action 11:58:56: FindRelatedProducts. Searching for related applications
+Action start 11:58:56: FindRelatedProducts.
+Action ended 11:58:56: FindRelatedProducts. Return value 1.
+Action 11:58:56: AppSearch. Searching for installed applications
+Action start 11:58:56: AppSearch.
+Property: ARM64_SHELLEXT, Signature: RegistrySearch_ARM64_SHELLEXT_Detected
+Action ended 11:58:56: AppSearch. Return value 1.
+Action 11:58:56: LaunchConditions. Evaluating launch conditions
+Action start 11:58:56: LaunchConditions.
+Action ended 11:58:56: LaunchConditions. Return value 1.
+Action 11:58:56: ValidateProductID. 
+Action start 11:58:56: ValidateProductID.
+Action ended 11:58:56: ValidateProductID. Return value 1.
+Action 11:58:56: CostInitialize. Computing space requirements
+Action start 11:58:56: CostInitialize.
+Action ended 11:58:56: CostInitialize. Return value 1.
+Action 11:58:56: FileCost. Computing space requirements
+Action start 11:58:56: FileCost.
+Action ended 11:58:56: FileCost. Return value 1.
+Action 11:58:56: SetLauncherInstallDirectoryLM. 
+Action start 11:58:56: SetLauncherInstallDirectoryLM.
+Action ended 11:58:56: SetLauncherInstallDirectoryLM. Return value 1.
+Action 11:58:56: CostFinalize. Computing space requirements
+Action start 11:58:56: CostFinalize.
+Action ended 11:58:56: CostFinalize. Return value 1.
+Action 11:58:56: InstallValidate. Validating install
+Action start 11:58:56: InstallValidate.
+Action ended 11:58:56: InstallValidate. Return value 1.
+Action 11:58:56: InstallInitialize. 
+Action start 11:58:56: InstallInitialize.
+Action ended 11:58:56: InstallInitialize. Return value 1.
+Action 11:58:56: ProcessComponents. Updating component registration
+Action start 11:58:56: ProcessComponents.
+Action ended 11:58:56: ProcessComponents. Return value 1.
+Action 11:58:56: UnpublishFeatures. Unpublishing Product Features
+Action start 11:58:56: UnpublishFeatures.
+Action ended 11:58:56: UnpublishFeatures. Return value 1.
+Action 11:58:56: RemoveRegistryValues. Removing system registry values
+Action start 11:58:56: RemoveRegistryValues.
+Action ended 11:58:56: RemoveRegistryValues. Return value 1.
+Action 11:58:56: RemoveEnvironmentStrings. Updating environment strings
+Action start 11:58:56: RemoveEnvironmentStrings.
+Action ended 11:58:56: RemoveEnvironmentStrings. Return value 1.
+Action 11:58:56: RemoveFiles. Removing files
+Action start 11:58:56: RemoveFiles.
+Action ended 11:58:56: RemoveFiles. Return value 1.
+Action 11:58:56: InstallFiles. Copying new files
+Action start 11:58:56: InstallFiles.
+Action ended 11:58:56: InstallFiles. Return value 1.
+Action 11:58:56: WriteRegistryValues. Writing system registry values
+Action start 11:58:56: WriteRegistryValues.
+Action ended 11:58:56: WriteRegistryValues. Return value 1.
+Action 11:58:56: WriteEnvironmentStrings. Updating environment strings
+Action start 11:58:56: WriteEnvironmentStrings.
+Action ended 11:58:56: WriteEnvironmentStrings. Return value 1.
+Action 11:58:56: RegisterUser. Registering user
+Action start 11:58:56: RegisterUser.
+Action ended 11:58:56: RegisterUser. Return value 1.
+Action 11:58:56: RegisterProduct. Registering product
+Action start 11:58:56: RegisterProduct.
+Action ended 11:58:56: RegisterProduct. Return value 1.
+Action 11:58:56: PublishFeatures. Publishing Product Features
+Action start 11:58:56: PublishFeatures.
+Action ended 11:58:56: PublishFeatures. Return value 1.
+Action 11:58:56: PublishProduct. Publishing product information
+Action start 11:58:56: PublishProduct.
+Action ended 11:58:56: PublishProduct. Return value 1.
+Action 11:58:56: InstallFinalize. 
+Action start 11:58:56: InstallFinalize.
+Action 11:58:56: ProcessComponents. Updating component registration
+Action start 11:58:56: ProcessComponents.
+1: {F3C5A650-8224-4CEC-B034-EF721E333796} 2: {B5107402-6958-461B-8B0A-4037D3327160} 3: C:\windows\py.exe 
+1: {F3C5A650-8224-4CEC-B034-EF721E333796} 2: {8E52B8CD-48BB-4D74-84CD-6238BCD11F20} 3: C:\windows\pyw.exe 
+1: {F3C5A650-8224-4CEC-B034-EF721E333796} 2: {95AEB930-367C-475C-A17E-A89BFCD4C670} 3: -1:\Software\Python\PyLauncher\InstallDir 
+1: {F3C5A650-8224-4CEC-B034-EF721E333796} 2: {4A41C365-4E27-4D38-A6D1-4A01B4A6500C} 3: -1:\Software\Python\PyLauncher\InstallDir 
+1: {F3C5A650-8224-4CEC-B034-EF721E333796} 2: {E7411EFD-F1DD-40EB-B0C7-4BA02BF3E75F} 3:  
+1: {F3C5A650-8224-4CEC-B034-EF721E333796} 2: {C5936696-9A5A-45A0-A830-D172C3329282} 3: C:\windows\pyshellext.win32.dll 
+1: {F3C5A650-8224-4CEC-B034-EF721E333796} 2: {C591963D-7FC6-4FCE-8642-5E01E6B8848F} 3:  
+1: {F3C5A650-8224-4CEC-B034-EF721E333796} 2: {5AF84D9A-D820-456B-B230-6E0105A50276} 3: -1:\Software\Python\PyLauncher\AssociateFiles 
+Action ended 11:58:56: ProcessComponents. Return value 1.
+Action 11:58:56: UnpublishFeatures. Unpublishing Product Features
+Action start 11:58:56: UnpublishFeatures.
+Action ended 11:58:56: UnpublishFeatures. Return value 1.
+Action 11:58:56: RemoveRegistryValues. Removing system registry values
+Action start 11:58:56: RemoveRegistryValues.
+Action ended 11:58:56: RemoveRegistryValues. Return value 1.
+Action 11:58:56: RemoveEnvironmentStrings. Updating environment strings
+Action start 11:58:56: RemoveEnvironmentStrings.
+Action ended 11:58:56: RemoveEnvironmentStrings. Return value 1.
+Action 11:58:56: RemoveFiles. Removing files
+Action start 11:58:56: RemoveFiles.
+File: py.exe, Directory: LauncherInstallDirectory
+File: pyshellext.amd64.dll, Directory: LauncherInstallDirectory
+File: pyshellext.arm64.dll, Directory: LauncherInstallDirectory
+File: pyshellext.win32.dll, Directory: LauncherInstallDirectory
+File: pyw.exe, Directory: LauncherInstallDirectory
+Action ended 11:58:56: RemoveFiles. Return value 1.
+Action 11:58:56: InstallFiles. Copying new files
+Action start 11:58:56: InstallFiles.
+File: py.exe,  Directory: LauncherInstallDirectory,  Size: 766232
+File: pyshellext.amd64.dll,  Directory: LauncherInstallDirectory,  Size: 50968
+File: pyshellext.arm64.dll,  Directory: LauncherInstallDirectory,  Size: 49944
+File: pyshellext.win32.dll,  Directory: LauncherInstallDirectory,  Size: 43288
+File: pyw.exe,  Directory: LauncherInstallDirectory,  Size: 764696
+Action ended 11:58:56: InstallFiles. Return value 1.
+Action 11:58:56: WriteRegistryValues. Writing system registry values
+Action start 11:58:56: WriteRegistryValues.
+Key: HKEY_LOCAL_MACHINE\Software\Python\PyLauncher, Name: InstallDir, Value: C:\windows\
+Key: HKEY_LOCAL_MACHINE\Software\Python\PyLauncher, Name: AssociateFiles, Value: 
+Key: HKEY_LOCAL_MACHINE\Software\Python\PyLauncher, Name: , Value: C:\windows\py.exe
+Key: HKEY_CLASSES_ROOT\CLSID\{BEA218D2-6950-497B-9434-61683EC065FE}\InprocServer32, Name: , Value: C:\windows\pyshellext.win32.dll
+Key: HKEY_CLASSES_ROOT\CLSID\{BEA218D2-6950-497B-9434-61683EC065FE}\InprocServer32, Name: ThreadingModel, Value: Apartment
+Key: HKEY_CLASSES_ROOT\Python.File\shell\open\command, Name: , Value: "C:\windows\py.exe" "%L" %*
+Key: HKEY_CLASSES_ROOT\.py, Name: , Value: Python.File
+Key: HKEY_CLASSES_ROOT\.py, Name: Content Type, Value: text/x-python
+Key: HKEY_CLASSES_ROOT\Python.File, Name: , Value: Python File
+Key: HKEY_CLASSES_ROOT\Python.File\DefaultIcon, Name: , Value: "C:\windows\py.exe",1
+Key: HKEY_CLASSES_ROOT\Python.File\shellex\DropHandler, Name: , Value: {BEA218D2-6950-497B-9434-61683EC065FE}
+Key: HKEY_CLASSES_ROOT\Python.NoConFile\shell\open\command, Name: , Value: "C:\windows\pyw.exe" "%L" %*
+Key: HKEY_CLASSES_ROOT\.pyw, Name: , Value: Python.NoConFile
+Key: HKEY_CLASSES_ROOT\.pyw, Name: Content Type, Value: text/x-python
+Key: HKEY_CLASSES_ROOT\Python.NoConFile, Name: , Value: Python File (no console)
+Key: HKEY_CLASSES_ROOT\Python.NoConFile\DefaultIcon, Name: , Value: "C:\windows\py.exe",1
+Key: HKEY_CLASSES_ROOT\Python.NoConFile\shellex\DropHandler, Name: , Value: {BEA218D2-6950-497B-9434-61683EC065FE}
+Key: HKEY_CLASSES_ROOT\Python.CompiledFile\shell\open\command, Name: , Value: "C:\windows\py.exe" "%L" %*
+Key: HKEY_CLASSES_ROOT\.pyc, Name: , Value: Python.CompiledFile
+Key: HKEY_CLASSES_ROOT\.pyo, Name: , Value: Python.CompiledFile
+Key: HKEY_CLASSES_ROOT\Python.CompiledFile, Name: , Value: Compiled Python File
+Key: HKEY_CLASSES_ROOT\Python.CompiledFile\DefaultIcon, Name: , Value: "C:\windows\py.exe",2
+Key: HKEY_CLASSES_ROOT\Python.CompiledFile\shellex\DropHandler, Name: , Value: {BEA218D2-6950-497B-9434-61683EC065FE}
+Key: HKEY_CLASSES_ROOT\.pyd, Name: , Value: Python.Extension
+Key: HKEY_CLASSES_ROOT\Python.Extension, Name: , Value: Python Extension Module
+Key: HKEY_CLASSES_ROOT\Python.Extension\DefaultIcon, Name: , Value: "C:\windows\py.exe",3
+Key: HKEY_CLASSES_ROOT\Python.ArchiveFile\shell\open\command, Name: , Value: "C:\windows\py.exe" "%L" %*
+Key: HKEY_CLASSES_ROOT\.pyz, Name: , Value: Python.ArchiveFile
+Key: HKEY_CLASSES_ROOT\.pyz, Name: Content Type, Value: application/x-zip-compressed
+Key: HKEY_CLASSES_ROOT\Python.ArchiveFile, Name: , Value: Python Zip Application File
+Key: HKEY_CLASSES_ROOT\Python.ArchiveFile\DefaultIcon, Name: , Value: "C:\windows\py.exe",5
+Key: HKEY_CLASSES_ROOT\Python.ArchiveFile\shellex\DropHandler, Name: , Value: {BEA218D2-6950-497B-9434-61683EC065FE}
+Key: HKEY_CLASSES_ROOT\Python.NoConArchiveFile\shell\open\command, Name: , Value: "C:\windows\pyw.exe" "%L" %*
+Key: HKEY_CLASSES_ROOT\.pyzw, Name: , Value: Python.NoConArchiveFile
+Key: HKEY_CLASSES_ROOT\.pyzw, Name: Content Type, Value: application/x-zip-compressed
+Key: HKEY_CLASSES_ROOT\Python.NoConArchiveFile, Name: , Value: Python Zip Application File (no console)
+Key: HKEY_CLASSES_ROOT\Python.NoConArchiveFile\DefaultIcon, Name: , Value: "C:\windows\py.exe",5
+Key: HKEY_CLASSES_ROOT\Python.NoConArchiveFile\shellex\DropHandler, Name: , Value: {BEA218D2-6950-497B-9434-61683EC065FE}
+Action ended 11:58:56: WriteRegistryValues. Return value 1.
+Action 11:58:56: WriteEnvironmentStrings. Updating environment strings
+Action start 11:58:56: WriteEnvironmentStrings.
+Action ended 11:58:56: WriteEnvironmentStrings. Return value 1.
+Action 11:58:56: RegisterUser. Registering user
+Action start 11:58:56: RegisterUser.
+1:  
+Action ended 11:58:56: RegisterUser. Return value 1.
+Action 11:58:56: RegisterProduct. Registering product
+Action start 11:58:56: RegisterProduct.
+1: {F3C5A650-8224-4CEC-B034-EF721E333796} 
+Action ended 11:58:56: RegisterProduct. Return value 1.
+Action 11:58:56: PublishFeatures. Publishing Product Features
+Action start 11:58:56: PublishFeatures.
+Feature: DefaultFeature
+Feature: AssociateFiles
+Action ended 11:58:56: PublishFeatures. Return value 1.
+Action 11:58:56: PublishProduct. Publishing product information
+Action start 11:58:56: PublishProduct.
+1: {F3C5A650-8224-4CEC-B034-EF721E333796} 
+Action ended 11:58:56: PublishProduct. Return value 1.
+Action ended 11:58:56: InstallFinalize. Return value 1.
+Action ended 11:58:56: INSTALL. Return value 1.
+1: Python Launcher 2: {F3C5A650-8224-4CEC-B034-EF721E333796} 3: 1 
+Property(S): UpgradeCode = {1B68A0EC-4DD3-5134-840E-73854B0863F1}
+Property(S): LauncherInstallDirectory = C:\windows\
+Property(S): TARGETDIR = C:\
+Property(S): SourceDir = C:\ProgramData\Package Cache\{F3C5A650-8224-4CEC-B034-EF721E333796}v3.11.9150.0\
+Property(S): Suppress_TARGETDIR_Check = 1
+Property(S): ARPPRODUCTICON = ARPIcon
+Property(S): ARPNOMODIFY = 1
+Property(S): DISABLEADVTSHORTCUTS = 1
+Property(S): Manufacturer = Python Software Foundation
+Property(S): ProductCode = {F3C5A650-8224-4CEC-B034-EF721E333796}
+Property(S): ProductLanguage = 1033
+Property(S): ProductName = Python Launcher
+Property(S): ProductVersion = 3.11.9150.0
+Property(S): SecureCustomProperties = DOWNGRADE;REMOVE_350_LAUNCHER;REMOVE_360A1_LAUNCHER;UPGRADE;UPGRADE_3_11_0;UPGRADE_3_11_1
+Property(S): AdminUser = 1
+Property(S): CommonAppDataFolder = C:\ProgramData\
+Property(S): FavoritesFolder = C:\users\lucasduarte\Favorites\
+Property(S): FontsFolder = C:\windows\Fonts\
+Property(S): SendToFolder = C:\users\lucasduarte\SendTo\
+Property(S): StartMenuFolder = C:\users\lucasduarte\Start Menu\
+Property(S): StartupFolder = C:\users\lucasduarte\Start Menu\Programs\StartUp\
+Property(S): TemplateFolder = C:\users\lucasduarte\Templates\
+Property(S): DesktopFolder = C:\users\lucasduarte\Desktop\
+Property(S): ProgramMenuFolder = C:\users\lucasduarte\Start Menu\Programs\
+Property(S): AdminToolsFolder = C:\users\lucasduarte\Start Menu\Programs\Administrative Tools\
+Property(S): AppDataFolder = C:\users\lucasduarte\Application Data\
+Property(S): SystemFolder = C:\windows\system32\
+Property(S): System16Folder = C:\windows\system32\
+Property(S): LocalAppDataFolder = C:\users\lucasduarte\Local Settings\Application Data\
+Property(S): MyPicturesFolder = C:\users\lucasduarte\My Pictures\
+Property(S): PersonalFolder = C:\users\lucasduarte\My Documents\
+Property(S): WindowsFolder = C:\windows\
+Property(S): PrintHoodFolder = C:\users\lucasduarte\PrintHood\
+Property(S): NetHoodFolder = C:\users\lucasduarte\NetHood\
+Property(S): RecentFolder = C:\users\lucasduarte\Recent\
+Property(S): PhysicalMemory = 31248
+Property(S): WindowsVolume = C:\
+Property(S): TempFolder = C:\users\lucasduarte\Temp\
+Property(S): Privileged = 1
+Property(S): VersionNT = 603
+Property(S): MsiNTProductType = 1
+Property(S): WindowsBuild = 9600
+Property(S): ServicePackLevel = 0
+Property(S): VersionMsi = 4.5
+Property(S): VersionDatabase = 400
+Property(S): Intel = 6
+Property(S): ProgramFilesFolder = C:\Program Files\
+Property(S): CommonFilesFolder = C:\Program Files\Common Files\
+Property(S): ScreenX = 1920
+Property(S): ScreenY = 1080
+Property(S): ColorBits = 32
+Property(S): UserSID = S-1-5-21-0-0-0-1000
+Property(S): UserLanguageID = 1033
+Property(S): SystemLanguageID = 1033
+Property(S): ProductState = -1
+Property(S): LogonUser = lucasduarte
+Property(S): ComputerName = POP-OS
+Property(S): UILevel = 2
+Property(S): PackageCode = {B006111A-073C-4095-B6F9-2FB623FDD736}
+Property(S): DATABASE = C:\windows\Installer\1049.msi
+Property(S): OriginalDatabase = C:\ProgramData\Package Cache\{F3C5A650-8224-4CEC-B034-EF721E333796}v3.11.9150.0\launcher.msi
+Property(S): SOURCEDIR = C:\ProgramData\Package Cache\{F3C5A650-8224-4CEC-B034-EF721E333796}v3.11.9150.0\
+Property(S): ALLUSERS = 1
+Property(S): MSIFASTINSTALL = 7
+Property(S): ADDLOCAL = DefaultFeature,AssociateFiles
+Property(S): REBOOT = ReallySuppress
+Property(S): ACTION = INSTALL
+Property(S): EXECUTEACTION = INSTALL
+Property(S): CostingComplete = 1
+Property(S): ROOTDRIVE = C:\
+Property(S): Preselected = 1
+Property(S): INSTALLLEVEL = 1
+Property(S): OutOfDiskSpace = 0
+Property(S): OutOfNoRbDiskSpace = 0
+1: 2 2: 0 
+1: 2 2: 1 
+Action ended 11:58:56: INSTALL. Return value 1.

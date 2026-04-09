@@ -1,0 +1,8 @@
+build/
+dist/
+*.spec
+__pycache__/
+*.py[cod]
+.wine-agenda/
+.cache/
+agenda_error.log

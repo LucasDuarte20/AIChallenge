@@ -1,0 +1,241 @@
+1: 0 2: 1033 3: 0 
+=== Logging started: 4/8/2026  11:58:51 ===
+Message type: 0, Argument: 1033, 0
+Message type: 1, Argument: Python 3.11.9 Executables (32-bit)
+Action 11:58:51: INSTALL. 
+Action start 11:58:51: INSTALL.
+1: 0 2: 1033 3: 0 
+1: 0 2: 1033 3: 0 
+=== Logging started: 4/8/2026  11:58:51 ===
+Message type: 0, Argument: 1033, 0
+Message type: 1, Argument: Python 3.11.9 Executables (32-bit)
+Action 11:58:51: INSTALL. 
+Action start 11:58:51: INSTALL.
+1: Python 3.11.9 Executables (32-bit) 2: {B72C484E-9254-42EB-9636-7F6416161471} 
+Action 11:58:51: FindRelatedProducts. Searching for related applications
+Action start 11:58:51: FindRelatedProducts.
+Action ended 11:58:51: FindRelatedProducts. Return value 1.
+Action 11:58:51: LaunchConditions. Evaluating launch conditions
+Action start 11:58:51: LaunchConditions.
+Action ended 11:58:51: LaunchConditions. Return value 1.
+Action 11:58:51: ValidateProductID. 
+Action start 11:58:51: ValidateProductID.
+Action ended 11:58:51: ValidateProductID. Return value 1.
+Action 11:58:51: CostInitialize. Computing space requirements
+Action start 11:58:51: CostInitialize.
+Action ended 11:58:51: CostInitialize. Return value 1.
+Action 11:58:51: FileCost. Computing space requirements
+Action start 11:58:51: FileCost.
+Action ended 11:58:51: FileCost. Return value 1.
+Action 11:58:51: CostFinalize. Computing space requirements
+Action start 11:58:51: CostFinalize.
+Action ended 11:58:51: CostFinalize. Return value 1.
+Action 11:58:51: InstallValidate. Validating install
+Action start 11:58:51: InstallValidate.
+Action ended 11:58:51: InstallValidate. Return value 1.
+Action 11:58:51: InstallInitialize. 
+Action start 11:58:51: InstallInitialize.
+Action ended 11:58:51: InstallInitialize. Return value 1.
+Action 11:58:51: ProcessComponents. Updating component registration
+Action start 11:58:51: ProcessComponents.
+Action ended 11:58:51: ProcessComponents. Return value 1.
+Action 11:58:51: UnpublishFeatures. Unpublishing Product Features
+Action start 11:58:51: UnpublishFeatures.
+Action ended 11:58:51: UnpublishFeatures. Return value 1.
+Action 11:58:51: RemoveRegistryValues. Removing system registry values
+Action start 11:58:51: RemoveRegistryValues.
+Action ended 11:58:51: RemoveRegistryValues. Return value 1.
+Action 11:58:51: RemoveShortcuts. Removing shortcuts
+Action start 11:58:51: RemoveShortcuts.
+Action ended 11:58:51: RemoveShortcuts. Return value 1.
+Action 11:58:51: RemoveFiles. Removing files
+Action start 11:58:51: RemoveFiles.
+Action ended 11:58:51: RemoveFiles. Return value 1.
+Action 11:58:51: InstallFiles. Copying new files
+Action start 11:58:51: InstallFiles.
+Action ended 11:58:51: InstallFiles. Return value 1.
+Action 11:58:51: CreateShortcuts. Creating shortcuts
+Action start 11:58:51: CreateShortcuts.
+Action ended 11:58:51: CreateShortcuts. Return value 1.
+Action 11:58:51: WriteRegistryValues. Writing system registry values
+Action start 11:58:51: WriteRegistryValues.
+Action ended 11:58:51: WriteRegistryValues. Return value 1.
+Action 11:58:51: RegisterUser. Registering user
+Action start 11:58:51: RegisterUser.
+Action ended 11:58:51: RegisterUser. Return value 1.
+Action 11:58:51: RegisterProduct. Registering product
+Action start 11:58:51: RegisterProduct.
+Action ended 11:58:51: RegisterProduct. Return value 1.
+Action 11:58:51: PublishFeatures. Publishing Product Features
+Action start 11:58:51: PublishFeatures.
+Action ended 11:58:51: PublishFeatures. Return value 1.
+Action 11:58:51: PublishProduct. Publishing product information
+Action start 11:58:51: PublishProduct.
+Action ended 11:58:51: PublishProduct. Return value 1.
+Action 11:58:51: InstallFinalize. 
+Action start 11:58:51: InstallFinalize.
+Action 11:58:51: ProcessComponents. Updating component registration
+Action start 11:58:51: ProcessComponents.
+1: {B72C484E-9254-42EB-9636-7F6416161471} 2: {49F2A6BC-CE3A-5582-AEE7-5FCE0E6D28DA} 3: -1:\Software\Python\PythonCore\3.11-32\InstalledFeatures\Shortcuts 
+1: {B72C484E-9254-42EB-9636-7F6416161471} 2: {D9DDB06B-2CD5-52CA-8FA4-4FECCDBF7001} 3: c:\Python311\python.exe 
+1: {B72C484E-9254-42EB-9636-7F6416161471} 2: {C7A9B5B7-DAE7-5E0D-8F8B-D3A4477A6CA9} 3: c:\Python311\pythonw.exe 
+1: {B72C484E-9254-42EB-9636-7F6416161471} 2: {EA7EF95F-03EA-5988-98A8-D41B64B166D0} 3: c:\Python311\vcruntime140.dll 
+1: {B72C484E-9254-42EB-9636-7F6416161471} 2: {ABDE879B-1AB6-5847-8A22-78DA2134ADBC} 3: -1:\Software\Python\PythonCore\DisplayName 
+1: {B72C484E-9254-42EB-9636-7F6416161471} 2: {365F22FB-BE3E-5FEB-A609-507C4CE475EA} 3: -1:\Software\Python\PythonCore\3.11-32\DisplayName 
+1: {B72C484E-9254-42EB-9636-7F6416161471} 2: {53198E7E-5D94-55E9-9DA3-47D88D7BED5E} 3: c:\Python311\LICENSE.txt 
+1: {B72C484E-9254-42EB-9636-7F6416161471} 2: {5E614FE5-9392-51E3-813C-726817679D98} 3: c:\Python311\NEWS.txt 
+1: {B72C484E-9254-42EB-9636-7F6416161471} 2: {63C1BC2E-1805-57FA-8ABF-0789D42E4DF5} 3: c:\Python311\DLLs\py.ico 
+1: {B72C484E-9254-42EB-9636-7F6416161471} 2: {399165A4-E5E2-5FD7-9245-8254148241F3} 3: c:\Python311\DLLs\pyc.ico 
+1: {B72C484E-9254-42EB-9636-7F6416161471} 2: {8020EBCC-3B16-53E0-978B-84A546C698A1} 3: c:\Python311\DLLs\pyd.ico 
+1: {B72C484E-9254-42EB-9636-7F6416161471} 2: {078EE23A-BB25-57C7-AB2C-BB1A3C0669ED} 3: -1:\Software\Python\PythonCore\3.11-32\InstalledFeatures\exe 
+Action ended 11:58:51: ProcessComponents. Return value 1.
+Action 11:58:51: UnpublishFeatures. Unpublishing Product Features
+Action start 11:58:51: UnpublishFeatures.
+Action ended 11:58:51: UnpublishFeatures. Return value 1.
+Action 11:58:51: RemoveRegistryValues. Removing system registry values
+Action start 11:58:51: RemoveRegistryValues.
+Action ended 11:58:51: RemoveRegistryValues. Return value 1.
+Action 11:58:51: RemoveShortcuts. Removing shortcuts
+Action start 11:58:51: RemoveShortcuts.
+Action ended 11:58:51: RemoveShortcuts. Return value 1.
+Action 11:58:51: RemoveFiles. Removing files
+Action start 11:58:51: RemoveFiles.
+File: LICENSE.txt, Directory: InstallDirectory
+File: NEWS.txt, Directory: InstallDirectory
+File: py.ico, Directory: DLLs
+File: pyc.ico, Directory: DLLs
+File: pyd.ico, Directory: DLLs
+File: python.exe, Directory: InstallDirectory
+File: pythonw.exe, Directory: InstallDirectory
+File: vcruntime140.dll, Directory: InstallDirectory
+Action ended 11:58:51: RemoveFiles. Return value 1.
+Action 11:58:51: InstallFiles. Copying new files
+Action start 11:58:51: InstallFiles.
+File: LICENSE.txt,  Directory: InstallDirectory,  Size: 36874
+File: NEWS.txt,  Directory: InstallDirectory,  Size: 1563659
+File: py.ico,  Directory: DLLs,  Size: 75809
+File: pyc.ico,  Directory: DLLs,  Size: 78396
+File: pyd.ico,  Directory: DLLs,  Size: 83351
+File: python.exe,  Directory: InstallDirectory,  Size: 101656
+File: pythonw.exe,  Directory: InstallDirectory,  Size: 100120
+File: vcruntime140.dll,  Directory: InstallDirectory,  Size: 91000
+Action ended 11:58:51: InstallFiles. Return value 1.
+Action 11:58:51: CreateShortcuts. Creating shortcuts
+Action start 11:58:51: CreateShortcuts.
+Shortcut: python.exe
+Action ended 11:58:51: CreateShortcuts. Return value 1.
+Action 11:58:51: WriteRegistryValues. Writing system registry values
+Action start 11:58:51: WriteRegistryValues.
+Key: HKEY_CURRENT_USER\Software\Python\PythonCore\3.11-32\InstalledFeatures, Name: Shortcuts, Value: 3.11.9150.0
+Key: HKEY_CURRENT_USER\Software\Python\PythonCore, Name: DisplayName, Value: Python Software Foundation
+Key: HKEY_CURRENT_USER\Software\Python\PythonCore\3.11-32, Name: DisplayName, Value: Python 3.11 (32-bit)
+Key: HKEY_CURRENT_USER\Software\Python\PythonCore\3.11-32\InstalledFeatures, Name: exe, Value: 3.11.9150.0
+Key: HKEY_CURRENT_USER\Software\Python\PythonCore\3.11-32\InstallPath, Name: , Value: c:\Python311\
+Key: HKEY_CURRENT_USER\Software\Python\PythonCore\3.11-32\InstallPath, Name: ExecutablePath, Value: c:\Python311\python.exe
+Key: HKEY_CURRENT_USER\Software\Python\PythonCore\3.11-32\InstallPath, Name: WindowedExecutablePath, Value: c:\Python311\pythonw.exe
+Key: HKEY_CURRENT_USER\Software\Python\PythonCore, Name: SupportUrl, Value: https://www.python.org/
+Key: HKEY_CURRENT_USER\Software\Python\PythonCore\3.11-32, Name: SupportUrl, Value: https://www.python.org/
+Key: HKEY_CURRENT_USER\Software\Python\PythonCore\3.11-32, Name: Version, Value: 3.11.9
+Key: HKEY_CURRENT_USER\Software\Python\PythonCore\3.11-32, Name: SysVersion, Value: 3.11
+Key: HKEY_CURRENT_USER\Software\Python\PythonCore\3.11-32, Name: SysArchitecture, Value: 32bit
+Action ended 11:58:51: WriteRegistryValues. Return value 1.
+Action 11:58:51: RegisterUser. Registering user
+Action start 11:58:51: RegisterUser.
+1:  
+Action ended 11:58:51: RegisterUser. Return value 1.
+Action 11:58:51: RegisterProduct. Registering product
+Action start 11:58:51: RegisterProduct.
+1: {B72C484E-9254-42EB-9636-7F6416161471} 
+Action ended 11:58:51: RegisterProduct. Return value 1.
+Action 11:58:51: PublishFeatures. Publishing Product Features
+Action start 11:58:51: PublishFeatures.
+Feature: DefaultFeature
+Feature: Shortcuts
+Action ended 11:58:51: PublishFeatures. Return value 1.
+Action 11:58:51: PublishProduct. Publishing product information
+Action start 11:58:51: PublishProduct.
+1: {B72C484E-9254-42EB-9636-7F6416161471} 
+Action ended 11:58:51: PublishProduct. Return value 1.
+Action ended 11:58:51: InstallFinalize. Return value 1.
+Action ended 11:58:51: INSTALL. Return value 1.
+1: Python 3.11.9 Executables (32-bit) 2: {B72C484E-9254-42EB-9636-7F6416161471} 3: 1 
+Property(S): UpgradeCode = {B629193D-C5FB-524A-AEE2-EF6322201812}
+Property(S): MenuDir = C:\users\lucasduarte\Start Menu\Programs\Python 3.11\
+Property(S): InstallDirectory = c:\Python311\
+Property(S): DLLs = c:\Python311\DLLs\
+Property(S): OPTIONALFEATURESREGISTRYKEY = Software\Python\PythonCore\3.11-32\InstalledFeatures
+Property(S): TARGETDIR = c:\Python311\
+Property(S): SourceDir = C:\users\lucasduarte\Local Settings\Application Data\Package Cache\{B72C484E-9254-42EB-9636-7F6416161471}v3.11.9150.0\
+Property(S): Catalogs = c:\Python311\DLLs\
+Property(S): ProgramMenuFolder = C:\users\lucasduarte\Start Menu\Programs\
+Property(S): Manufacturer = Python Software Foundation
+Property(S): ProductCode = {B72C484E-9254-42EB-9636-7F6416161471}
+Property(S): ProductLanguage = 1033
+Property(S): ProductName = Python 3.11.9 Executables (32-bit)
+Property(S): ProductVersion = 3.11.9150.0
+Property(S): UpgradeTable = 1
+Property(S): REGISTRYKEY = Software\Python\PythonCore\3.11-32
+Property(S): ROOTREGISTRYKEY = Software\Python\PythonCore
+Property(S): SecureCustomProperties = DOWNGRADE;MISSING_CORE;UPGRADE
+Property(S): AdminUser = 1
+Property(S): CommonAppDataFolder = C:\ProgramData\
+Property(S): FavoritesFolder = C:\users\lucasduarte\Favorites\
+Property(S): FontsFolder = C:\windows\Fonts\
+Property(S): SendToFolder = C:\users\lucasduarte\SendTo\
+Property(S): StartMenuFolder = C:\users\lucasduarte\Start Menu\
+Property(S): StartupFolder = C:\users\lucasduarte\Start Menu\Programs\StartUp\
+Property(S): TemplateFolder = C:\users\lucasduarte\Templates\
+Property(S): DesktopFolder = C:\users\lucasduarte\Desktop\
+Property(S): AdminToolsFolder = C:\users\lucasduarte\Start Menu\Programs\Administrative Tools\
+Property(S): AppDataFolder = C:\users\lucasduarte\Application Data\
+Property(S): SystemFolder = C:\windows\system32\
+Property(S): System16Folder = C:\windows\system32\
+Property(S): LocalAppDataFolder = C:\users\lucasduarte\Local Settings\Application Data\
+Property(S): MyPicturesFolder = C:\users\lucasduarte\My Pictures\
+Property(S): PersonalFolder = C:\users\lucasduarte\My Documents\
+Property(S): WindowsFolder = C:\windows\
+Property(S): PrintHoodFolder = C:\users\lucasduarte\PrintHood\
+Property(S): NetHoodFolder = C:\users\lucasduarte\NetHood\
+Property(S): RecentFolder = C:\users\lucasduarte\Recent\
+Property(S): PhysicalMemory = 31248
+Property(S): WindowsVolume = C:\
+Property(S): TempFolder = C:\users\lucasduarte\Temp\
+Property(S): Privileged = 1
+Property(S): VersionNT = 603
+Property(S): MsiNTProductType = 1
+Property(S): WindowsBuild = 9600
+Property(S): ServicePackLevel = 0
+Property(S): VersionMsi = 4.5
+Property(S): VersionDatabase = 400
+Property(S): Intel = 6
+Property(S): ProgramFilesFolder = C:\Program Files\
+Property(S): CommonFilesFolder = C:\Program Files\Common Files\
+Property(S): ScreenX = 1920
+Property(S): ScreenY = 1080
+Property(S): ColorBits = 32
+Property(S): UserSID = S-1-5-21-0-0-0-1000
+Property(S): UserLanguageID = 1033
+Property(S): SystemLanguageID = 1033
+Property(S): ProductState = -1
+Property(S): LogonUser = lucasduarte
+Property(S): ComputerName = POP-OS
+Property(S): UILevel = 2
+Property(S): PackageCode = {5A0852D9-0355-400B-AA92-357DE9501780}
+Property(S): DATABASE = C:\windows\Installer\fcf6.msi
+Property(S): OriginalDatabase = C:\users\lucasduarte\Local Settings\Application Data\Package Cache\{B72C484E-9254-42EB-9636-7F6416161471}v3.11.9150.0\exe.msi
+Property(S): SOURCEDIR = C:\users\lucasduarte\Local Settings\Application Data\Package Cache\{B72C484E-9254-42EB-9636-7F6416161471}v3.11.9150.0\
+Property(S): ARPSYSTEMCOMPONENT = 1
+Property(S): MSIFASTINSTALL = 7
+Property(S): ADDLOCAL = DefaultFeature,Shortcuts
+Property(S): REBOOT = ReallySuppress
+Property(S): ACTION = INSTALL
+Property(S): EXECUTEACTION = INSTALL
+Property(S): CostingComplete = 1
+Property(S): ROOTDRIVE = C:\
+Property(S): Preselected = 1
+Property(S): INSTALLLEVEL = 1
+Property(S): OutOfDiskSpace = 0
+Property(S): OutOfNoRbDiskSpace = 0
+1: 2 2: 0 
+1: 2 2: 1 
+Action ended 11:58:51: INSTALL. Return value 1.

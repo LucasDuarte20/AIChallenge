@@ -1,0 +1,194 @@
+1: 0 2: 1033 3: 0 
+=== Logging started: 4/8/2026  11:58:56 ===
+Message type: 0, Argument: 1033, 0
+Message type: 1, Argument: Python 3.11.9 pip Bootstrap (32-bit)
+Action 11:58:56: INSTALL. 
+Action start 11:58:56: INSTALL.
+1: 0 2: 1033 3: 0 
+1: 0 2: 1033 3: 0 
+=== Logging started: 4/8/2026  11:58:56 ===
+Message type: 0, Argument: 1033, 0
+Message type: 1, Argument: Python 3.11.9 pip Bootstrap (32-bit)
+Action 11:58:56: INSTALL. 
+Action start 11:58:56: INSTALL.
+1: Python 3.11.9 pip Bootstrap (32-bit) 2: {AD78493B-B379-41CC-AAB0-5E8B7C11C8A4} 
+Action 11:58:56: FindRelatedProducts. Searching for related applications
+Action start 11:58:56: FindRelatedProducts.
+Action ended 11:58:56: FindRelatedProducts. Return value 1.
+Action 11:58:56: AppSearch. Searching for installed applications
+Action start 11:58:56: AppSearch.
+Property: PYTHON_EXE, Signature: PythonExe
+Action ended 11:58:56: AppSearch. Return value 1.
+Action 11:58:56: LaunchConditions. Evaluating launch conditions
+Action start 11:58:56: LaunchConditions.
+Action ended 11:58:56: LaunchConditions. Return value 1.
+Action 11:58:56: ValidateProductID. 
+Action start 11:58:56: ValidateProductID.
+Action ended 11:58:56: ValidateProductID. Return value 1.
+Action 11:58:56: CostInitialize. Computing space requirements
+Action start 11:58:56: CostInitialize.
+Action ended 11:58:56: CostInitialize. Return value 1.
+Action 11:58:56: FileCost. Computing space requirements
+Action start 11:58:56: FileCost.
+Action ended 11:58:56: FileCost. Return value 1.
+Action 11:58:56: CostFinalize. Computing space requirements
+Action start 11:58:56: CostFinalize.
+Action ended 11:58:56: CostFinalize. Return value 1.
+Action 11:58:56: InstallValidate. Validating install
+Action start 11:58:56: InstallValidate.
+Action ended 11:58:56: InstallValidate. Return value 1.
+Action 11:58:56: InstallInitialize. 
+Action start 11:58:56: InstallInitialize.
+Action ended 11:58:56: InstallInitialize. Return value 1.
+Action 11:58:56: ProcessComponents. Updating component registration
+Action start 11:58:56: ProcessComponents.
+Action ended 11:58:56: ProcessComponents. Return value 1.
+Action 11:58:56: UnpublishFeatures. Unpublishing Product Features
+Action start 11:58:56: UnpublishFeatures.
+Action ended 11:58:56: UnpublishFeatures. Return value 1.
+Action 11:58:56: RemoveRegistryValues. Removing system registry values
+Action start 11:58:56: RemoveRegistryValues.
+Action ended 11:58:56: RemoveRegistryValues. Return value 1.
+Action 11:58:56: WriteRegistryValues. Writing system registry values
+Action start 11:58:56: WriteRegistryValues.
+Action ended 11:58:56: WriteRegistryValues. Return value 1.
+Action 11:58:56: RegisterUser. Registering user
+Action start 11:58:56: RegisterUser.
+Action ended 11:58:56: RegisterUser. Return value 1.
+Action 11:58:56: RegisterProduct. Registering product
+Action start 11:58:56: RegisterProduct.
+Action ended 11:58:56: RegisterProduct. Return value 1.
+Action 11:58:56: PublishFeatures. Publishing Product Features
+Action start 11:58:56: PublishFeatures.
+Action ended 11:58:56: PublishFeatures. Return value 1.
+Action 11:58:56: PublishProduct. Publishing product information
+Action start 11:58:56: PublishProduct.
+Action ended 11:58:56: PublishProduct. Return value 1.
+Action 11:58:56: SetUpdatePipCommandLine. 
+Action start 11:58:56: SetUpdatePipCommandLine.
+Action ended 11:58:56: SetUpdatePipCommandLine. Return value 1.
+Action 11:58:56: UpdatePip. 
+Action start 11:58:56: UpdatePip.
+Action ended 11:58:56: UpdatePip. Return value 1.
+Action 11:58:56: InstallFinalize. 
+Action start 11:58:56: InstallFinalize.
+Action 11:58:56: ProcessComponents. Updating component registration
+Action start 11:58:56: ProcessComponents.
+1: {AD78493B-B379-41CC-AAB0-5E8B7C11C8A4} 2: {C1166F4B-84F4-537C-9971-886F17884BF2} 3: -1:\Software\Python\PythonCore\3.11-32\InstalledFeatures\pip 
+Action ended 11:58:56: ProcessComponents. Return value 1.
+Action 11:58:56: UnpublishFeatures. Unpublishing Product Features
+Action start 11:58:56: UnpublishFeatures.
+Action ended 11:58:56: UnpublishFeatures. Return value 1.
+Action 11:58:56: RemoveRegistryValues. Removing system registry values
+Action start 11:58:56: RemoveRegistryValues.
+Action ended 11:58:56: RemoveRegistryValues. Return value 1.
+Action 11:58:56: WriteRegistryValues. Writing system registry values
+Action start 11:58:56: WriteRegistryValues.
+Key: HKEY_CURRENT_USER\Software\Python\PythonCore\3.11-32\InstalledFeatures, Name: pip, Value: 3.11.9150.0
+Action ended 11:58:56: WriteRegistryValues. Return value 1.
+Action 11:58:56: RegisterUser. Registering user
+Action start 11:58:56: RegisterUser.
+1:  
+Action ended 11:58:56: RegisterUser. Return value 1.
+Action 11:58:56: RegisterProduct. Registering product
+Action start 11:58:56: RegisterProduct.
+1: {AD78493B-B379-41CC-AAB0-5E8B7C11C8A4} 
+Action ended 11:58:56: RegisterProduct. Return value 1.
+Action 11:58:56: PublishFeatures. Publishing Product Features
+Action start 11:58:56: PublishFeatures.
+Feature: DefaultFeature
+Action ended 11:58:56: PublishFeatures. Return value 1.
+Action 11:58:56: PublishProduct. Publishing product information
+Action start 11:58:56: PublishProduct.
+1: {AD78493B-B379-41CC-AAB0-5E8B7C11C8A4} 
+Action ended 11:58:56: PublishProduct. Return value 1.
+Action 11:58:56: UpdatePip. 
+Action start 11:58:56: UpdatePip.
+CAQuietExec:  Looking in links: c:\users\lucasduarte\Temp\tmptt1_vcne
+CAQuietExec:  Processing c:\users\lucasduarte\temp\tmptt1_vcne\setuptools-65.5.0-py3-none-any.whl
+CAQuietExec:  Processing c:\users\lucasduarte\temp\tmptt1_vcne\pip-24.0-py3-none-any.whl
+CAQuietExec:  Installing collected packages: setuptools, pip
+CAQuietExec:    WARNING: The scripts pip.exe, pip3.11.exe and pip3.exe are installed in 'c:\Python311\Scripts' which is not on PATH.
+CAQuietExec:    Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+CAQuietExec:  Successfully installed pip-24.0 setuptools-65.5.0
+Action ended 11:59:05: UpdatePip. Return value 1.
+Action ended 11:59:05: InstallFinalize. Return value 1.
+Action ended 11:59:05: INSTALL. Return value 1.
+1: Python 3.11.9 pip Bootstrap (32-bit) 2: {AD78493B-B379-41CC-AAB0-5E8B7C11C8A4} 3: 1 
+Property(S): UpgradeCode = {9E051BFD-2A10-53BD-A046-6C7CF064C53F}
+Property(S): PYTHON_EXE = c:\Python311\python.exe
+Property(S): InstallDirectory = c:\Python311\
+Property(S): OPTIONALFEATURESREGISTRYKEY = Software\Python\PythonCore\3.11-32\InstalledFeatures
+Property(S): UpdatePip = "c:\Python311\python.exe" -E -s -m ensurepip -U --default-pip
+Property(S): TARGETDIR = c:\Python311\
+Property(S): SourceDir = C:\users\lucasduarte\Local Settings\Application Data\Package Cache\{AD78493B-B379-41CC-AAB0-5E8B7C11C8A4}v3.11.9150.0\
+Property(S): Manufacturer = Python Software Foundation
+Property(S): ProductCode = {AD78493B-B379-41CC-AAB0-5E8B7C11C8A4}
+Property(S): ProductLanguage = 1033
+Property(S): ProductName = Python 3.11.9 pip Bootstrap (32-bit)
+Property(S): ProductVersion = 3.11.9150.0
+Property(S): UpgradeTable = 1
+Property(S): REGISTRYKEY = Software\Python\PythonCore\3.11-32
+Property(S): SecureCustomProperties = DOWNGRADE;MISSING_CORE;PYTHON_EXE;UPGRADE
+Property(S): AdminUser = 1
+Property(S): CommonAppDataFolder = C:\ProgramData\
+Property(S): FavoritesFolder = C:\users\lucasduarte\Favorites\
+Property(S): FontsFolder = C:\windows\Fonts\
+Property(S): SendToFolder = C:\users\lucasduarte\SendTo\
+Property(S): StartMenuFolder = C:\users\lucasduarte\Start Menu\
+Property(S): StartupFolder = C:\users\lucasduarte\Start Menu\Programs\StartUp\
+Property(S): TemplateFolder = C:\users\lucasduarte\Templates\
+Property(S): DesktopFolder = C:\users\lucasduarte\Desktop\
+Property(S): ProgramMenuFolder = C:\users\lucasduarte\Start Menu\Programs\
+Property(S): AdminToolsFolder = C:\users\lucasduarte\Start Menu\Programs\Administrative Tools\
+Property(S): AppDataFolder = C:\users\lucasduarte\Application Data\
+Property(S): SystemFolder = C:\windows\system32\
+Property(S): System16Folder = C:\windows\system32\
+Property(S): LocalAppDataFolder = C:\users\lucasduarte\Local Settings\Application Data\
+Property(S): MyPicturesFolder = C:\users\lucasduarte\My Pictures\
+Property(S): PersonalFolder = C:\users\lucasduarte\My Documents\
+Property(S): WindowsFolder = C:\windows\
+Property(S): PrintHoodFolder = C:\users\lucasduarte\PrintHood\
+Property(S): NetHoodFolder = C:\users\lucasduarte\NetHood\
+Property(S): RecentFolder = C:\users\lucasduarte\Recent\
+Property(S): PhysicalMemory = 31248
+Property(S): WindowsVolume = C:\
+Property(S): TempFolder = C:\users\lucasduarte\Temp\
+Property(S): Privileged = 1
+Property(S): VersionNT = 603
+Property(S): MsiNTProductType = 1
+Property(S): WindowsBuild = 9600
+Property(S): ServicePackLevel = 0
+Property(S): VersionMsi = 4.5
+Property(S): VersionDatabase = 400
+Property(S): Intel = 6
+Property(S): ProgramFilesFolder = C:\Program Files\
+Property(S): CommonFilesFolder = C:\Program Files\Common Files\
+Property(S): ScreenX = 1920
+Property(S): ScreenY = 1080
+Property(S): ColorBits = 32
+Property(S): UserSID = S-1-5-21-0-0-0-1000
+Property(S): UserLanguageID = 1033
+Property(S): SystemLanguageID = 1033
+Property(S): ProductState = -1
+Property(S): LogonUser = lucasduarte
+Property(S): ComputerName = POP-OS
+Property(S): UILevel = 2
+Property(S): PackageCode = {8639B844-6AD3-420E-8480-FD01225FB111}
+Property(S): DATABASE = C:\windows\Installer\10ab.msi
+Property(S): OriginalDatabase = C:\users\lucasduarte\Local Settings\Application Data\Package Cache\{AD78493B-B379-41CC-AAB0-5E8B7C11C8A4}v3.11.9150.0\pip.msi
+Property(S): SOURCEDIR = C:\users\lucasduarte\Local Settings\Application Data\Package Cache\{AD78493B-B379-41CC-AAB0-5E8B7C11C8A4}v3.11.9150.0\
+Property(S): ARPSYSTEMCOMPONENT = 1
+Property(S): MSIFASTINSTALL = 7
+Property(S): REBOOT = ReallySuppress
+Property(S): ACTION = INSTALL
+Property(S): EXECUTEACTION = INSTALL
+Property(S): CostingComplete = 1
+Property(S): ROOTDRIVE = C:\
+Property(S): INSTALLLEVEL = 1
+Property(S): OutOfDiskSpace = 0
+Property(S): OutOfNoRbDiskSpace = 0
+Property(S): CustomActionData = "c:\Python311\python.exe" -E -s -m ensurepip -U --default-pip
+1: 2 2: 0 
+1: 2 2: 1 
+Action ended 11:59:05: INSTALL. Return value 1.

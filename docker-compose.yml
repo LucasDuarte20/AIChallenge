@@ -1,39 +1,45 @@
 services:
-  # Base de datos
   postgres:
     image: postgres:16-alpine
+    container_name: stock_postgres
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-agendadb}
-      POSTGRES_USER: ${POSTGRES_USER:-agendauser}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-agendapass}
+      POSTGRES_DB: ${POSTGRES_DB:-stockdb}
+      POSTGRES_USER: ${POSTGRES_USER:-stockuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-stockpass}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      # - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql  # (opcional) extensiones
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "${POSTGRES_PORT:-5432}:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-agendauser} -d ${POSTGRES_DB:-agendadb}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-stockuser} -d ${POSTGRES_DB:-stockdb}"]
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - stock_net
+    restart: unless-stopped
 
-  # Admin DB (opcional)
   adminer:
     image: adminer:4
+    container_name: stock_adminer
     ports:
       - "${ADMINER_PORT:-8080}:8080"
     depends_on:
       postgres:
         condition: service_healthy
+    networks:
+      - stock_net
+    restart: unless-stopped
 
-  # Backend API (FastAPI)
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    container_name: stock_backend
     env_file: .env
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER:-agendauser}:${POSTGRES_PASSWORD:-agendapass}@postgres:5432/${POSTGRES_DB:-agendadb}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-stockuser}:${POSTGRES_PASSWORD:-stockpass}@postgres:5432/${POSTGRES_DB:-stockdb}
     volumes:
       - ./backend/app:/app/app
       - ./data:/app/data
@@ -42,12 +48,88 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-    # healthcheck:
-    #   test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
-    #   interval: 15s
-    #   timeout: 5s
-    #   retries: 5
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    networks:
+      - stock_net
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: stock_frontend
+    ports:
+      - "${FRONTEND_PORT:-3000}:80"
+    depends_on:
+      - backend
+    networks:
+      - stock_net
+    restart: unless-stopped
+
+  # Syncer: baja Excel desde SharePoint y lo importa periódicamente
+  sharepoint_syncer:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: stock_sharepoint_syncer
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-stockuser}:${POSTGRES_PASSWORD:-stockpass}@postgres:5432/${POSTGRES_DB:-stockdb}
+    volumes:
+      - ./backend/app:/app/app
+      - ./data:/app/data
+    command: ["python", "-m", "app.scripts.sync_sharepoint"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - stock_net
+    restart: unless-stopped
+    profiles:
+      - sync
+
+  # Bot gratis por Telegram (polling)
+  telegram_bot:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: stock_telegram_bot
+    env_file: .env
+    environment:
+      BOT_BACKEND_URL: http://backend:8000
+    volumes:
+      - ./backend/app:/app/app
+    command: ["python", "-m", "app.scripts.telegram_bot"]
+    depends_on:
+      backend:
+        condition: service_started
+    networks:
+      - stock_net
+    restart: unless-stopped
+    profiles:
+      - telegram
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: stock_ollama
+    volumes:
+      - ollama_data:/root/.ollama
+    ports:
+      - "${OLLAMA_PORT:-11434}:11434"
+    networks:
+      - stock_net
+    restart: unless-stopped
+    profiles:
+      - ollama
 
 volumes:
   postgres_data:
+  ollama_data:
 
+networks:
+  stock_net:
+    driver: bridge
