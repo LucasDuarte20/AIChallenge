@@ -9,7 +9,6 @@ import openpyxl
 
 from agenda_app.models import ClientRow
 
-CLIENTS_SHEET_DEFAULT = "LISTA DE INDUSTRIA"
 HEADER_ROW_FALLBACK = 3
 
 FIELD_ALIASES: list[tuple[str, tuple[str, ...]]] = [
@@ -23,8 +22,8 @@ FIELD_ALIASES: list[tuple[str, tuple[str, ...]]] = [
     ("office", ("Oficina",)),
     ("executive_code", ("Vendedor",)),
     ("sector", ("Sector",)),
-    ("last_visit", ("Última visita", "Fecha última visita", "Ultima visita")),
-    ("next_visit", ("Próxima visita", "Proxima visita", "Fecha próxima visita")),
+    ("last_visit", ("Última visita", "Fecha última visita", "Ultima visita", "Ultima visita-contacto")),
+    ("next_visit", ("Próxima visita", "Proxima visita", "Fecha próxima visita", "Proxima visita-contacto", "Siguiente visita-contacto")),
     ("lat", ("Latitud", "Lat")),
     ("lon", ("Longitud", "Lon", "Lng")),
 ]
@@ -96,17 +95,19 @@ def _parse_float(v: Any) -> float | None:
 def find_header_row(ws, max_scan: int = 25) -> int:
     for row_idx in range(1, max_scan + 1):
         row = next(ws.iter_rows(min_row=row_idx, max_row=row_idx, values_only=True))
-        vals = [(_clean(v) or "") for v in row]
-        has_dir = "Dirección" in vals
-        has_name = "Nombre" in vals or "1. Nombre" in vals
+        vals = [(_clean(v) or "").lower() for v in row]
+        has_dir = "dirección" in vals or "direccion" in vals
+        has_name = "nombre" in vals or "1. nombre" in vals
         if has_dir and has_name:
             return row_idx
     return HEADER_ROW_FALLBACK
 
 
+CLIENTS_SHEET_DEFAULT = None
+
 def load_clients(
     file_path: str | Path,
-    sheet_name: str = CLIENTS_SHEET_DEFAULT,
+    sheet_name: str | None = CLIENTS_SHEET_DEFAULT,
     header_row_index: int | None = None,
 ) -> tuple[list[ClientRow], openpyxl.workbook.workbook.Workbook, str, int]:
     """
@@ -115,7 +116,10 @@ def load_clients(
     """
     path = Path(file_path)
     wb = openpyxl.load_workbook(str(path), data_only=False)
-    if sheet_name not in wb.sheetnames:
+    
+    if not sheet_name:
+        sheet_name = wb.sheetnames[0]
+    elif sheet_name not in wb.sheetnames:
         available = ", ".join(wb.sheetnames)
         raise ValueError(f"Hoja '{sheet_name}' no encontrada. Disponibles: {available}")
 
@@ -133,6 +137,7 @@ def load_clients(
 
         if row_idx == header_row:
             headers = vals
+            headers_lower = [h.lower() for h in headers]
             continue
 
         if headers is None:
@@ -145,8 +150,8 @@ def load_clients(
         for field_name, aliases in FIELD_ALIASES:
             val: str | None = None
             for alias in aliases:
-                if alias in headers:
-                    idx = headers.index(alias)
+                if alias.lower() in headers_lower:
+                    idx = headers_lower.index(alias.lower())
                     raw = row[idx] if idx < len(row) else None
                     if field_name in ("last_visit", "next_visit"):
                         item[field_name] = _parse_date_cell(raw)
@@ -196,9 +201,10 @@ def _header_row_values(ws, header_row: int) -> list[str]:
 
 def _col_letter_for_field(headers: list[str], field: str) -> str | None:
     _, aliases = next((fa for fa in FIELD_ALIASES if fa[0] == field), ("", ()))
+    headers_lower = [h.lower() for h in headers]
     for a in aliases:
-        if a in headers:
-            idx = headers.index(a) + 1
+        if a.lower() in headers_lower:
+            idx = headers_lower.index(a.lower()) + 1
             return openpyxl.utils.get_column_letter(idx)
     return None
 
@@ -221,8 +227,9 @@ def ensure_visit_columns(
         letter = _col_letter_for_field(headers, field_key)
         if letter:
             return letter
-        if default_title in headers:
-            idx = headers.index(default_title) + 1
+        headers_lower = [h.lower() for h in headers]
+        if default_title.lower() in headers_lower:
+            idx = headers_lower.index(default_title.lower()) + 1
             return openpyxl.utils.get_column_letter(idx)
         max_c = ws.max_column or len(headers)
         col = max_c + 1
@@ -246,7 +253,8 @@ def write_next_visits(
     ws = wb[sheet_name]
     col_next_idx = openpyxl.utils.column_index_from_string(col_next)
     for row_idx, d in row_to_next.items():
-        ws.cell(row=row_idx, column=col_next_idx, value=d)
+        cell = ws.cell(row=row_idx, column=col_next_idx, value=d)
+        cell.number_format = "mm/dd/yyyy"
 
 
 def write_last_visits(
@@ -255,11 +263,31 @@ def write_last_visits(
     header_row: int,
     row_to_last: dict[int, date],
 ) -> None:
-    col_last, _ = ensure_visit_columns(wb, sheet_name, header_row)
+    """
+    Escribe fechas de última visita y, si coincide con una programada (margen 2 semanas), 
+    limpia la fecha programada.
+    """
+    col_last, col_next = ensure_visit_columns(wb, sheet_name, header_row)
     ws = wb[sheet_name]
     col_last_idx = openpyxl.utils.column_index_from_string(col_last)
+    col_next_idx = openpyxl.utils.column_index_from_string(col_next)
+
     for row_idx, d in row_to_last.items():
-        ws.cell(row=row_idx, column=col_last_idx, value=d)
+        # 1. Escribir última visita
+        cell_last = ws.cell(row=row_idx, column=col_last_idx, value=d)
+        cell_last.number_format = "mm/dd/yyyy"
+
+        # 2. Lógica de limpieza de Próxima Visita (Regla de las 2 semanas)
+        # Leer valor actual de próxima visita
+        raw_next = ws.cell(row=row_idx, column=col_next_idx).value
+        next_date = _parse_date_cell(raw_next)
+        
+        if next_date:
+            # Si la visita realizada está dentro de 14 días (antes o después) de la programada
+            # la consideramos cumplida y limpiamos la programación.
+            diff = abs((d - next_date).days)
+            if diff <= 14:
+                ws.cell(row=row_idx, column=col_next_idx, value=None)
 
 
 def save_workbook(wb: openpyxl.workbook.workbook.Workbook, path: str | Path) -> Path:

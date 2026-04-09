@@ -1,0 +1,2 @@
+wine: created the configuration directory '/home/lucasduarte/.wine64'
+wine: WINEARCH set to win64 but '/home/lucasduarte/.wine64' is a 32-bit installation.

@@ -50,9 +50,24 @@ def scheduling_urgency(c: ClientRow, ref_date: date) -> float:
     Combina valor del cliente y tiempo desde último contacto.
     """
     value = _priority_score(c)
+    
+    # 1. INCLUSIÓN OBLIGATORIA (Siguiente visita agendada)
+    if c.next_visit is not None:
+        # Si la fecha agendada es hoy o futuro
+        if c.next_visit >= ref_date:
+            return 1e9 + value  # Prioridad absoluta
+            
+    # 2. CLIENTES NUEVOS (Sin fecha de última visita)
     if c.last_visit is None:
-        return value * 100.0
-    days = max(0, (ref_date - c.last_visit).days)
+        return 1e6 + (value * 100.0) # Muy alta prioridad
+
+    # 3. PRIORIDAD POR ANTIGÜEDAD
+    # Asegurar que ambos son objetos date
+    lv = c.last_visit
+    if isinstance(lv, datetime):
+        lv = lv.date()
+        
+    days = max(0, (ref_date - lv).days)
     return value * (10.0 * math.log1p(days) + 0.05 * days)
 
 
@@ -134,18 +149,16 @@ class PlannedVisit:
 
 def build_agenda(
     clients: list[ClientRow],
-    executive_code: str,
     start_day: date,
     horizon_days: int,
     visits_per_day: int = 2,
 ) -> tuple[list[PlannedVisit], dict[int, date]]:
     """
-    Filtra por vendedor, ordena por urgencia + depto + vecino más cercano,
+    Ordena por urgencia + depto + vecino más cercano,
     expande por frecuencia anual y asigna slots.
     Devuelve visitas planificadas y mapa row_index -> primera fecha de próxima visita en el horizonte.
     """
-    ex = (executive_code or "").strip()
-    pool = [c for c in clients if (c.executive_code or "").strip() == ex and c.name]
+    pool = [c for c in clients if c.name]
     if not pool:
         return [], {}
 
@@ -162,7 +175,14 @@ def build_agenda(
         group.sort(key=lambda c: -scheduling_urgency(c, start_day))
         base_order.extend(_order_nearest_neighbor(group))
 
-    remaining = {id(c): _visits_per_year(c) for c in base_order}
+    remaining = {}
+    for c in base_order:
+        freq = _visits_per_year(c)
+        # Si tiene visita agendada vigente, asegurar al menos 1 aparición primordial
+        if c.next_visit and c.next_visit >= start_day:
+            freq = max(1, freq)
+        remaining[id(c)] = freq
+
     max_v = max(remaining.values()) if remaining else 1
     expanded: list[ClientRow] = []
     for _ in range(max_v):

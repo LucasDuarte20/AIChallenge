@@ -12,6 +12,33 @@ import tkinter as tk
 from datetime import date, timedelta
 from pathlib import Path
 from tkinter import filedialog, messagebox
+import logging
+import traceback
+
+# Configuración de logs para capturar errores que cierren la app
+logging.basicConfig(
+    filename="agenda_error.log",
+    level=logging.ERROR,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
+def exception_handler(exc_type, exc_value, exc_traceback):
+    if issubclass(exc_type, KeyboardInterrupt):
+        sys.__excepthook__(exc_type, exc_value, exc_traceback)
+        return
+    err_msg = "".join(traceback.format_exception(exc_type, exc_value, exc_traceback))
+    logging.error("Unhandled exception:\n%s", err_msg)
+    # También mostrar en consola por si acaso
+    print(err_msg, file=sys.stderr)
+    try:
+        messagebox.showerror("Crítico — Error Inesperado", 
+                           f"La aplicación se cerró debido a un error.\n\n"
+                           f"Se ha guardado el detalle en 'agenda_error.log'.\n\n"
+                           f"Error: {exc_value}")
+    except:
+        pass
+
+sys.excepthook = exception_handler
 
 try:
     import customtkinter as ctk
@@ -274,11 +301,11 @@ class AgendaApp(ctk.CTk):
     # ── Acciones ──────────────────────────────────────────────
     def _on_create(self) -> None:
         if self._ensure():
-            CreateAgendaWindow(self)
+            self._agenda_win = CreateAgendaWindow(self)
 
     def _on_update(self) -> None:
         if self._ensure():
-            UpdateWindow(self)
+            self._update_win = UpdateWindow(self)
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -294,8 +321,11 @@ class CreateAgendaWindow(ctk.CTkToplevel):
         self.geometry("1020x720")
         self.minsize(900, 620)
         self.configure(fg_color=BG_DARK)
-        self.transient(app)
-        self.grab_set()
+        # Quitado grab_set y transient para evitar bloqueos en algunos sistemas
+        # self.transient(app)
+        # self.grab_set()
+        self.after(10, self.focus_set)
+        self.after(100, self.lift)
 
         self._visits: list = []
         self._first_next: dict = {}
@@ -342,20 +372,7 @@ class CreateAgendaWindow(ctk.CTkToplevel):
             font=(FONT, 15, "bold"), text_color=TEXT,
         ).pack(anchor="w", pady=(0, 14))
 
-        # Vendedor
-        self._section_label(lp, "Vendedor")
-        execs = sorted({
-            (c.executive_code or "").strip()
-            for c in self.app._clients
-            if (c.executive_code or "").strip()
-        })
-        self._vendor = tk.StringVar(value=execs[0] if execs else "")
-        ctk.CTkComboBox(
-            lp, values=execs, variable=self._vendor, width=220,
-            fg_color=BG_INPUT, border_color=GRAY_DARK,
-            button_color=RED, button_hover_color=RED_HOVER,
-            dropdown_fg_color=BG_SURFACE,
-        ).pack(anchor="w", pady=(2, 10))
+
 
         # Calendario
         self._section_label(lp, "Fecha de inicio")
@@ -511,13 +528,6 @@ class CreateAgendaWindow(ctk.CTkToplevel):
 
     # ── Generación ────────────────────────────────────────────
     def _generate(self) -> None:
-        vendor = self._vendor.get().strip()
-        if not vendor:
-            messagebox.showwarning(
-                "Dato requerido", "Elegí un vendedor.", parent=self,
-            )
-            return
-
         sd = self._start_date()
         horizon = int(self._weeks.get()) * 7
         vpd = int(self._vpd.get())
@@ -532,7 +542,7 @@ class CreateAgendaWindow(ctk.CTkToplevel):
             self.update_idletasks()
 
             visits, first_next = build_agenda(
-                self.app._clients, vendor, sd, horizon,
+                self.app._clients, sd, horizon,
                 visits_per_day=vpd,
             )
 
@@ -542,7 +552,7 @@ class CreateAgendaWindow(ctk.CTkToplevel):
             if not visits:
                 messagebox.showinfo(
                     "Sin datos",
-                    "No hay clientes para ese vendedor.",
+                    "No hay clientes para procesar.",
                     parent=self,
                 )
                 return
@@ -555,7 +565,11 @@ class CreateAgendaWindow(ctk.CTkToplevel):
             self.update_idletasks()
 
         except Exception as exc:
-            messagebox.showerror("Error", str(exc), parent=self)
+            logging.exception("Error durante la generación de agenda")
+            messagebox.showerror("Error de generación", 
+                               f"Ocurrió un error al calcular la agenda.\n\n"
+                               f"Detalle: {str(exc)}", 
+                               parent=self)
         finally:
             self._gen_btn.configure(
                 state="normal", text="🚀  Generar Agenda",
@@ -588,9 +602,9 @@ class CreateAgendaWindow(ctk.CTkToplevel):
                 sf, text=lbl, font=(FONT, 10), text_color=TEXT_DIM,
             ).pack()
 
-        # Visitas agrupadas por fecha
+        # Visitas agrupadas por fecha (Limitado a los primeros 60 para evitar saturar la UI)
         DAYS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"]
-        rows = visits_to_simple_rows(visits[:40])
+        rows = visits_to_simple_rows(visits[:60])
         cur_date = None
 
         for r in rows:
@@ -638,7 +652,6 @@ class CreateAgendaWindow(ctk.CTkToplevel):
 
     # ── Guardar ───────────────────────────────────────────────
     def _save(self) -> None:
-        vendor = self._vendor.get().strip()
 
         # Escribir fechas de próxima visita en la planilla
         write_next_visits(
@@ -652,7 +665,7 @@ class CreateAgendaWindow(ctk.CTkToplevel):
         out = filedialog.asksaveasfilename(
             defaultextension=".xlsx",
             filetypes=[("Excel", "*.xlsx")],
-            initialfile=f"agenda_{vendor}_{date.today().isoformat()}.xlsx",
+            initialfile=f"agenda_{date.today().isoformat()}.xlsx",
             parent=self,
         )
         if not out:
@@ -702,10 +715,15 @@ class UpdateWindow(ctk.CTkToplevel):
         self.geometry("960x640")
         self.minsize(850, 520)
         self.configure(fg_color=BG_DARK)
-        self.transient(app)
-        self.grab_set()
+        # Quitado grab_set y transient para evitar bloqueos
+        # self.transient(app)
+        # self.grab_set()
+        self.after(10, self.focus_set)
+        self.after(100, self.lift)
 
         self._entries: list[tuple[int, str, ctk.CTkEntry]] = []
+        self._pending_updates: dict[int, str] = {}
+        self._search_timer = None
         self._build()
 
     def _build(self) -> None:
@@ -724,30 +742,6 @@ class UpdateWindow(ctk.CTkToplevel):
         ci = ctk.CTkFrame(ctrl, fg_color="transparent")
         ci.pack(fill="x", padx=20, pady=8)
 
-        ctk.CTkLabel(
-            ci, text="Vendedor:", font=(FONT, 12, "bold"), text_color=TEXT_DIM,
-        ).pack(side="left")
-
-        execs = sorted({
-            (c.executive_code or "").strip()
-            for c in self.app._clients
-            if (c.executive_code or "").strip()
-        })
-        self._vendor = tk.StringVar(value=execs[0] if execs else "")
-        ctk.CTkComboBox(
-            ci, values=execs, variable=self._vendor, width=200,
-            fg_color=BG_INPUT, border_color=GRAY_DARK,
-            button_color=RED, button_hover_color=RED_HOVER,
-            dropdown_fg_color=BG_SURFACE,
-        ).pack(side="left", padx=(8, 12))
-
-        ctk.CTkButton(
-            ci, text="Cargar", font=(FONT, 12),
-            fg_color=RED, hover_color=RED_HOVER,
-            corner_radius=6, height=30, width=100,
-            command=self._refresh,
-        ).pack(side="left", padx=4)
-
         ctk.CTkButton(
             ci, text="📅 Marcar todos hoy", font=(FONT, 12),
             fg_color=GRAY, hover_color=GRAY_LIGHT,
@@ -755,12 +749,32 @@ class UpdateWindow(ctk.CTkToplevel):
             command=self._mark_today,
         ).pack(side="left", padx=4)
 
+        # Barra de búsqueda
+        sbar = ctk.CTkFrame(self, fg_color=BG_SURFACE, corner_radius=0, height=44)
+        sbar.pack(fill="x", pady=(0, 2))
+        sbar.pack_propagate(False)
+        
+        ctk.CTkLabel(
+            sbar, text="🔍", font=(FONT, 14), text_color=TEXT_DIM
+        ).pack(side="left", padx=(20, 10))
+        
+        self._search_var = tk.StringVar()
+        self._search_var.trace_add("write", self._on_search_keypress)
+        
+        self._search_entry = ctk.CTkEntry(
+            sbar, textvariable=self._search_var,
+            placeholder_text="Buscar cliente por nombre o dirección...",
+            fg_color=BG_INPUT, border_color=GRAY_DARK,
+            font=(FONT, 12), height=30
+        )
+        self._search_entry.pack(side="left", fill="x", expand=True, padx=(0, 20))
+
         # Hint
         ctk.CTkLabel(
             self,
             text="  Solo completá fecha donde hubo visita "
                  "(AAAA-MM-DD). Podés usar el botón «Hoy».",
-            font=(FONT, 11), text_color=TEXT_MUTED,
+            font=(FONT, 11), text_color=TEXT_DIM,
         ).pack(anchor="w", padx=18, pady=(6, 0))
 
         # Cabecera de tabla
@@ -804,29 +818,72 @@ class UpdateWindow(ctk.CTkToplevel):
             command=self._save,
         ).pack(side="left", padx=6)
 
+        self._refresh()
+
+    def _on_search_keypress(self, *args) -> None:
+        if self._search_timer:
+            self.after_cancel(self._search_timer)
+        self._search_timer = self.after(300, self._refresh)
+
+    def _sync_entries(self) -> None:
+        """Guarda el contenido actual de los inputs en memoria antes de limpiar la UI."""
+        for ri, _, ent in self._entries:
+            val = ent.get().strip()
+            if val:
+                self._pending_updates[ri] = val
+            elif ri in self._pending_updates:
+                del self._pending_updates[ri]
+
     # ── Cargar clientes ───────────────────────────────────────
     def _refresh(self) -> None:
+        if not self.winfo_exists():
+            return
+
+        # Sincronizar lo que ya escribió el usuario antes de borrar
+        self._sync_entries()
+
         for w in self._tbl.winfo_children():
             w.destroy()
         self._entries.clear()
 
-        vendor = self._vendor.get().strip()
-        if not vendor:
-            return
+        search = self._search_var.get().lower().strip()
+        
+        pool = []
+        for c in self.app._clients:
+            if not c.name: continue
+            if not search:
+                pool.append(c)
+            else:
+                matches_name = search in c.name.lower()
+                matches_addr = search in (c.address_raw or "").lower()
+                if matches_name or matches_addr:
+                    pool.append(c)
 
-        pool = [
-            c for c in self.app._clients
-            if (c.executive_code or "").strip() == vendor
-        ]
         if not pool:
             ctk.CTkLabel(
                 self._tbl,
-                text="No hay clientes para este vendedor.",
-                font=(FONT, 12), text_color=TEXT_MUTED,
-            ).pack(pady=20)
+                text="No hay clientes que coincidan con la búsqueda." if search else "No hay clientes cargados.",
+                font=(FONT, 12), text_color=TEXT_DIM,
+            ).pack(pady=40)
             return
 
-        for i, c in enumerate(pool):
+        self._lbl_loading = ctk.CTkLabel(
+            self._tbl, text=f"Mostrando {len(pool)} clientes...",
+            font=(FONT, 12), text_color=TEXT_DIM,
+        )
+        self._lbl_loading.pack(pady=10)
+
+        self._render_chunk(pool, 0)
+
+    def _render_chunk(self, pool: list, start_idx: int) -> None:
+        if not self.winfo_exists():
+            return
+            
+        chunk_size = 20
+        end_idx = min(start_idx + chunk_size, len(pool))
+
+        for i in range(start_idx, end_idx):
+            c = pool[i]
             bg = BG_CARD if i % 2 == 0 else BG_CARD_ALT
             rf = ctk.CTkFrame(
                 self._tbl, fg_color=bg, corner_radius=0, height=36,
@@ -835,7 +892,7 @@ class UpdateWindow(ctk.CTkToplevel):
             rf.pack_propagate(False)
 
             ctk.CTkLabel(
-                rf, text=(c.name or "")[:48], font=(FONT, 11),
+                rf, text=(c.name or "")[:48], font=(FONT, 11, "bold"),
                 text_color=TEXT, width=320, anchor="w",
             ).pack(side="left", padx=(8, 0))
 
@@ -848,14 +905,22 @@ class UpdateWindow(ctk.CTkToplevel):
             ent = ctk.CTkEntry(
                 rf, width=140, height=26,
                 fg_color=BG_INPUT, border_color=GRAY_DARK,
-                placeholder_text="AAAA-MM-DD", font=(FONT, 11),
+                placeholder_text="AAAA-MM-DD", font=(FONT, 11, "bold"),
+                text_color=RED if c.row_index in self._pending_updates else TEXT
             )
             ent.pack(side="left")
+            
+            # Pre-cargar valor si ya se escribió
+            if c.row_index in self._pending_updates:
+                ent.insert(0, self._pending_updates[c.row_index])
+            
             self._entries.append((c.row_index, c.name or "", ent))
 
-            def _today(e=ent):
+            def _today(e=ent, idx=c.row_index):
                 e.delete(0, "end")
                 e.insert(0, date.today().isoformat())
+                self._pending_updates[idx] = date.today().isoformat()
+                e.configure(text_color=RED)
 
             ctk.CTkButton(
                 rf, text="Hoy", width=50, height=24,
@@ -863,33 +928,53 @@ class UpdateWindow(ctk.CTkToplevel):
                 hover_color=GRAY, corner_radius=4,
                 command=_today,
             ).pack(side="left", padx=(6, 4))
+            
+        if end_idx < len(pool):
+            self.after(20, self._render_chunk, pool, end_idx)
+        else:
+            if getattr(self, "_lbl_loading", None) and self._lbl_loading.winfo_exists():
+                self._lbl_loading.destroy()
+                self._lbl_loading = None
 
     # ── Marcar todos hoy ──────────────────────────────────────
     def _mark_today(self) -> None:
+        """Marca todos los clientes que están actualmente filtrados como visitados hoy."""
         t = date.today().isoformat()
-        for _, _, e in self._entries:
-            e.delete(0, "end")
-            e.insert(0, t)
+        
+        # 1. Obtener el pool filtrado actual (mismo criterio que _refresh)
+        search = self._search_var.get().lower().strip()
+        pool = []
+        for c in self.app._clients:
+            if not c.name: continue
+            if not search or (search in c.name.lower() or search in (c.address_raw or "").lower()):
+                pool.append(c)
+        
+        # 2. Actualizar el diccionario de pendientes para todos los del pool
+        for c in pool:
+            self._pending_updates[c.row_index] = t
+        
+        # 3. Refrescar la UI para mostrar los cambios
+        self._refresh()
 
     # ── Guardar ───────────────────────────────────────────────
     def _save(self) -> None:
-        vendor = self._vendor.get().strip()
+        self._sync_entries()
+        
         updates: dict[int, date] = {}
 
-        for ri, name, ent in self._entries:
-            s = ent.get().strip()
-            if not s:
-                continue
+        for ri, s in self._pending_updates.items():
             try:
                 parts = s.split("-")
                 if len(parts) != 3:
                     raise ValueError
                 updates[ri] = date(int(parts[0]), int(parts[1]), int(parts[2]))
             except (ValueError, TypeError):
+                # Buscar nombre del cliente para el error
+                c_name = next((c.name for c in self.app._clients if c.row_index == ri), "Desconocido")
                 messagebox.showerror(
                     "Fecha inválida",
                     f"Formato esperado: AAAA-MM-DD.\n"
-                    f"Problema con: {s!r}\nCliente: {name}",
+                    f"Problema con: {s!r}\nCliente: {c_name}",
                     parent=self,
                 )
                 return
@@ -908,8 +993,7 @@ class UpdateWindow(ctk.CTkToplevel):
         out = filedialog.asksaveasfilename(
             defaultextension=".xlsx",
             filetypes=[("Excel", "*.xlsx")],
-            initialfile=f"planilla_actualizada_{vendor}_"
-                        f"{date.today().isoformat()}.xlsx",
+            initialfile=f"planilla_actualizada_{date.today().isoformat()}.xlsx",
             parent=self,
         )
         if not out:
