@@ -19,3 +19,11 @@ data/incoming/
 *.xlsx
 *.csv
 
+## PyInstaller / Build
+build/
+dist/
+*.spec
+agenda_error.log
+stderr.log
+wine.log
+

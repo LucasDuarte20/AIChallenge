@@ -1,88 +1,44 @@
-.PHONY: help up down build logs shell-backend import-excel seed reset-db ps clean
+# Asistente de Agenda Comercial - Makefile
+# Genera el ejecutable portable para Windows (o Linux)
 
-COMPOSE = docker compose
-BACKEND = stock_backend
+# Variables configurables (se pueden pasar por línea de comandos)
+# Ejemplo: make build app APP_NAME=MiAgenda OUT_DIR=./dist
+APP_NAME ?= AgendaVentas
+OUT_DIR ?= ./dist
+
+.PHONY: all help install build app clean
 
 help:
+	@echo "Comandos disponibles:"
+	@echo "  make install             Instala dependencias (pip)"
+	@echo "  make build app           Construye el ejecutable (.exe)"
+	@echo "  make clean               Limpia archivos temporales de construcción"
 	@echo ""
-	@echo "  Chatbot de Stock - Comandos disponibles"
-	@echo "  ----------------------------------------"
-	@echo "  make up            Levantar todos los servicios"
-	@echo "  make up-ollama     Levantar incluyendo Ollama"
-	@echo "  make down          Detener todos los servicios"
-	@echo "  make build         Reconstruir imágenes"
-	@echo "  make logs          Ver logs de todos los servicios"
-	@echo "  make logs-backend  Ver logs del backend"
-	@echo "  make shell-backend Abrir shell en el backend"
-	@echo "  make import-excel  Importar Excel desde ./data/"
-	@echo "  make seed          Insertar datos de ejemplo"
-	@echo "  make reset-db      Borrar y recrear la base de datos"
-	@echo "  make ps            Estado de contenedores"
-	@echo "  make clean         Borrar volúmenes y contenedores"
-	@echo "  make up-telegram   Levantar bot gratis Telegram"
-	@echo "  make up-sync       Levantar sync SharePoint"
-	@echo ""
+	@echo "Variables:"
+	@echo "  APP_NAME                 Nombre de la aplicación final (default: AgendaVentas)"
+	@echo "  OUT_DIR                  Directorio de salida (default: ./dist)"
 
-up:
-	@cp -n .env.example .env 2>/dev/null || true
-	$(COMPOSE) up -d
-	@echo ""
-	@echo "  Servicios activos:"
-	@echo "  - Backend API:  http://localhost:$${BACKEND_PORT:-8000}"
-	@echo "  - Frontend:     http://localhost:$${FRONTEND_PORT:-3000}"
-	@echo "  - Adminer:      http://localhost:$${ADMINER_PORT:-8080}"
-	@echo ""
-
-up-ollama:
-	@cp -n .env.example .env 2>/dev/null || true
-	$(COMPOSE) --profile ollama up -d
-	@echo "  Ollama: http://localhost:$${OLLAMA_PORT:-11434}"
-
-up-telegram:
-	@cp -n .env.example .env 2>/dev/null || true
-	$(COMPOSE) --profile telegram up -d
-
-up-sync:
-	@cp -n .env.example .env 2>/dev/null || true
-	$(COMPOSE) --profile sync up -d
-
-down:
-	$(COMPOSE) down
+install:
+	pip install -r requirements.txt pyinstaller
 
 build:
-	$(COMPOSE) build --no-cache
+	@echo "Preparando entorno de construcción..."
+	@mkdir -p $(OUT_DIR)
 
-logs:
-	$(COMPOSE) logs -f
-
-logs-backend:
-	$(COMPOSE) logs -f backend
-
-logs-db:
-	$(COMPOSE) logs -f postgres
-
-shell-backend:
-	docker exec -it $(BACKEND) bash
-
-import-excel:
-	@if [ -z "$(FILE)" ]; then \
-		echo "Uso: make import-excel FILE=nombre_archivo.xlsx"; \
-		echo "El archivo debe estar en ./data/"; \
-	else \
-		docker exec $(BACKEND) python -m app.scripts.import_excel $(FILE); \
-	fi
-
-seed:
-	docker exec $(BACKEND) python -m app.scripts.seed_example
-
-reset-db:
-	$(COMPOSE) down -v
-	$(COMPOSE) up -d postgres
-	@echo "Base de datos reiniciada."
-
-ps:
-	$(COMPOSE) ps
+app:
+	@echo "Construyendo ejecutable: $(APP_NAME)..."
+	python3 -m PyInstaller --onefile --windowed --name $(APP_NAME) \
+		--hidden-import=openpyxl.cell._writer \
+		--hidden-import=babel.numbers \
+		--collect-all customtkinter \
+		--add-data "assets:assets" \
+		main.py
+	@echo "Moviendo ejecutable a $(OUT_DIR)..."
+	@mv dist/$(APP_NAME).exe $(OUT_DIR)/ 2>/dev/null || mv dist/$(APP_NAME) $(OUT_DIR)/ 2>/dev/null
+	@echo "-------------------------------------------------------"
+	@echo "✅ PROCESO FINALIZADO"
+	@echo "📍 El ejecutable se encuentra en: $(OUT_DIR)/$(APP_NAME)"
+	@echo "-------------------------------------------------------"
 
 clean:
-	$(COMPOSE) down -v --remove-orphans
-	docker image prune -f
+	rm -rf build/ dist/ *.spec agenda_error.log stderr.log wine.log
